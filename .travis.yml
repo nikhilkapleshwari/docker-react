@@ -1,0 +1,11 @@
+language: generic 
+sudo: required
+services:
+     - docker
+
+before_install:
+     - docker build -t nikhil/docker-react -f Dockerfile.dev .
+
+#-- --coverage is to return from hanging test suite o/p.
+script:
+     - docker run nikhil/docker-react npm run test -- --coverage
